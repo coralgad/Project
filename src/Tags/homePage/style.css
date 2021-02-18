@@ -1,0 +1,17 @@
+div.container {
+    padding: 30px;
+    margin: 30px;
+    display: contents;
+}
+
+.jumbotron{
+    text-align: right;
+    padding: inherit;
+    padding-top: 50px;
+    padding-bottom: 120px;
+    }
+    
+div#homePageDiv{
+        padding: 10px;
+        margin: 10px;
+    }

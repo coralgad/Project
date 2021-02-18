@@ -1,0 +1,30 @@
+
+.card-deck {
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: 0px;
+    margin-left: 0px;
+    margin: 20px;
+    justify-content:center;
+}
+
+#cardCol{
+    margin-bottom: 20px;
+}
+
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 10px;
+}
+.custom-select{
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+}

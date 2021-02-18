@@ -1,0 +1,83 @@
+/*ProductPage CSS*/
+#ProductCard{
+    width: 750px;
+    height: 450px;
+    padding: inherit;
+    margin: auto;
+  }
+  
+  #imgCol{
+    padding: inherit;
+    margin: auto;
+  }
+  
+  #Pictures{
+    padding: inherit;
+    margin: auto;
+  
+  }
+  
+  .nav-link {
+    display: block;
+    padding: .5rem 1rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    
+  }
+  
+  .h{
+    margin-bottom: 20px;
+    font-weight: 500;
+    line-height: 4;
+    text-align: right;
+  }
+
+  .form-group{
+    display: flex;
+    justify-content: center;
+  }
+
+  .custom-select{
+    width: 35%;
+    margin: 7px;
+  }
+  #imgCol {
+    padding: inherit;
+    margin: auto;
+    height: 100px;
+    width: 100px;
+  }
+
+  .Pictures{
+    padding: inherit;
+    margin: 5px;  
+  }
+
+div.container{
+  padding: 10px;
+  margin: 10px;
+}
+
+button#AddToCart{
+  padding: 0px;
+}
+
+div#productDetails{
+  padding: 0px;
+}
+
+div.form-group{
+  padding: 30px;
+}
+
+div.BtnDiv{
+  padding-bottom: 0px;
+}
+
+div#details.col{
+  padding-top: 10%;
+}
+
+p#prodName{
+  margin-bottom: 30px;
+}

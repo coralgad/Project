@@ -1,0 +1,12 @@
+/*FOOTER CSS*/
+  
+nav.footer.navbar.navbar-expand.navbar-dark {
+  width: 100%;
+  position: absolute;
+  clear: both;
+  bottom: 0;
+}
+
+.navbar-expand {
+  flex-flow: row nowrap;
+}
