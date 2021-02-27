@@ -23,8 +23,8 @@
     min-height: 1px;
     padding: 10px;
 }
-.custom-select{
-    display: inline-block;
-    width: 30%;
-    margin: 10px;
+
+.custom-select {
+    width: 10%;
+    margin: 7px;
 }

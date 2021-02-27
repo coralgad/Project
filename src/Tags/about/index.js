@@ -9,7 +9,7 @@ function About(){
            <Container id="aboutContainer">
                <Row>
                    <Col  xs={9}>
-                   <Jumbotron fluid>
+                   <Jumbotron fluid id="aboutJumbotron">
                     <Container>
                         <h1>אודותינו</h1>
                         <p>

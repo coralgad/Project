@@ -1,54 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Card,CardDeck,Button,Form,Row,Col} from 'react-bootstrap';
-import picture from './1.png';
+import {LinkContainer} from 'react-router-bootstrap';
+// import picture from './1.png';
 import './style.css';
 
-function AllProducts() {
-    const products =[
-            {   
-            name:"מברשת צביעה",
-            description:"מברשת צביעה לקיר דגם נועם",
-            price:20,
-            picture:picture,
-            },
+function AllProducts(props) {
+    let [productsArrayState, updateproducts] = useState(props.products);
+    let [currentFilter,setCurrenrFilter] = useState("initial");
 
-            {
-                name:"גלגלת צביעה",
-                description:"גלגלת צביעה לקיר ",
-                price:50,
-                picture:picture,
-            },
+    function priceAsc(){
+        const productsByPriceAsc = productsArrayState.sort((a,b)=>a.price -b.price);
+        updateproducts([...productsByPriceAsc]);
+    }
 
-            {
-                name:"גלגלת צביעה",
-                description:"גלגלת צביעה לקיר ",
-                price:50,
-                picture:picture,
-            },
-
-            {
-                name:"גלגלת צביעה",
-                description:"גלגלת צביעה לקיר ",
-                price:50,
-                picture:picture,
-            },
-            {
-                name:"גלגלת צביעה",
-                description:"גלגלת צביעה לקיר ",
-                price:50,
-                picture:picture,
-            }
-    ];
+    function priceDesc(){
+        const productsByPriceDesc = productsArrayState.sort((a,b)=>b.price -a.price);
+        updateproducts([...productsByPriceDesc]);
+    }
+    const handleChanges = (SelectedItem)=>{
+        setCurrenrFilter(SelectedItem.target.value);
+        // eslint-disable-next-line default-case
+        switch (SelectedItem.target.value) {
+            case ("price low to high"):
+                priceAsc();
+                break;
+            
+            case ("price high to low"):
+                priceDesc();
+                break;
+    }
+}
 
 
-    
-
-    const productItem = products.map((product,index)=>
+    const productItem = productsArrayState.map((product,index)=>
     <div id="card" key={index}>
        <Row>
         <Col id="cardCol">
        <Card style={{width:'15rem', position:'relative', display:'inline-block'}}>
+       <LinkContainer to={"/product"}>
        <Card.Img variant="top" src={product.picture}/>
+       </LinkContainer>
        <Card.Body>
        <Card.Title>{product.name}</Card.Title> 
        <Card.Text>{product.price}₪</Card.Text> 
@@ -72,15 +63,20 @@ function AllProducts() {
        </Row>
        </div>
     );
-   
+
     return(
-        /*כאן יופיע הסלקטטטטטטטט*/
+        <>
+        <div>
+            <Form.Control value={currentFilter} onChange={handleChanges} as="select" custom>
+            <option value="initial">מיין לפי</option>
+            <option value="price low to high">מחיר מהנמוך לגבוה</option>
+            <option value="price high to low">מחיר מהגבוה לנמוך</option>
+            </Form.Control>
+        </div>
        <CardDeck>
            {productItem}
        </CardDeck>
+       </>
    )
 }
 export default AllProducts;
-
-
-

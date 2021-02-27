@@ -41,8 +41,11 @@ function Login(){
             כניסה
         </Button>
         <p className="forgot-password text-right">
-        שכחת <a href="#">סיסמה?</a>
+         <a href="#">שכחת סיסמה?</a>
+         <span className="forgot-password text-left">
+             <a href="#">הרשמה</a></span>
         </p>
+        
         </Form>
         </Card.Body>
         </Card>

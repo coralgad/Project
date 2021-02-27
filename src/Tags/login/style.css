@@ -3,3 +3,12 @@ div#loginDiv{
     margin: 10px;
 }
 
+a {
+    color: #007bff;
+    padding: 5px;
+}
+
+div.form-group {
+    padding: 30px;
+    justify-content: right;
+}

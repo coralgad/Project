@@ -7,3 +7,12 @@ div#aboutDiv{
     padding: 10px;
     margin: 10px;
 }
+
+#aboutJumbotron {
+    text-align: right;
+    padding: inherit;
+    padding-top: 50px;
+    padding-bottom: 120px;
+    padding-left: 20px;
+    padding-right: 10px;
+}

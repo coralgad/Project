@@ -11,7 +11,7 @@ function ProductPage(props){
     <Row>
       <Col><img
                 alt={"logo"}
-                src={props.product.picture}
+                src={props.products[0].picture}
                 width= "200px"
                 style={{marginBottom: "10px"}}
 
@@ -19,14 +19,14 @@ function ProductPage(props){
             
             <img
                 alt={"logo"}
-                src={props.product.picture}
+                src={props.products[0].picture}
                 width= "200px"
                 style={{marginBottom: "10px"}}
 
             />
             <img
                 alt={"logo"}
-                src={props.product.picture}
+                src={props.products[0].picture}
                 width= "200px"
                 style={{marginBottom: "10px"}}
 
@@ -34,13 +34,13 @@ function ProductPage(props){
       <Col xs={6}>
       <img
                 alt={"logo"}
-                src={props.product.picture}
+                src={props.products[0].picture}
                 width= "450px"
             /> </Col>
       <Col id="details">
-      <p id="prodName">{props.product.name}</p>
-      <p id="prodName">{props.product.price}</p>
-      <p id="prodDescription">{props.product.description}</p>
+      <p id="prodName">{props.products[0].name}</p>
+      <p id="prodName">{props.products[0].price}₪</p>
+      <p id="prodDescription">{props.products[0].description}</p>
     <div>
     <Form id="form">
             <Form.Group controlId="exampleForm.SelectCustom">

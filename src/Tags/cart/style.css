@@ -1,0 +1,17 @@
+#cartDiv{
+    padding: 10px;
+    margin: 10px;
+}
+
+.col-8 {
+    flex: 50%;
+    max-width: 50%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    padding: 30px;
+}

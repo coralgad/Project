@@ -2,7 +2,11 @@ import React from 'react';
 import {Row,Button,Jumbotron,Col,Card,Container} from 'react-bootstrap';
 import './style.css';
 import pic from './EEH7YG.jpg';
-// import Gallery from './gallery/index.js';
+import Gallery from '../gallery/index';
+
+
+
+
 
 
 function HomePage(){
@@ -18,13 +22,18 @@ function HomePage(){
           <p>
             גלישה מהנה!!!
           </p>
-          <Button variant="outline-dark">בואו נתחיל!</Button>
+          <Button id="starBtn" variant="outline-dark">בואו נתחיל!</Button>
         </p>
       </Jumbotron> 
       </Row>
 
       <Row>
-        <Col xs={3}>
+
+      <Col xs={6}>
+        <Gallery />
+        </Col> 
+
+        {/* <Col xs={3}>
         <Card style={{ width:'18rem'}}>
           <Card.Body>
             <Card.Title>היחודיות שלנו
@@ -32,24 +41,11 @@ function HomePage(){
             <Card.Text>
             בטבוריית הבוטיק הלקוח בוחר בעצמו את ההצבע מתוך מגוון אפשרויות עצומות,בוחר את גודל פחית הצבע הרצויה ואת המוצרים הנלווים.
             </Card.Text>
-            <Button variant="outline-dark">ליצירת קשר</Button>
           </Card.Body>
         </Card>
-        </Col>
+        </Col> */}
 
-        <Col xs={3}>
-        <Card style={{ width: '18rem' }}>
-        <Card.Body>
-          <Card.Title>הבלוג שלנו</Card.Title>
-          <Card.Text>
-         {/* <div><Gallery /></div>; */}
-          </Card.Text>
-          <Card.Link href="#">Another Link</Card.Link>
-        </Card.Body>
-      </Card>
-
-        </Col>
-        <Col xs={3}>
+       <Col xs={3}>
         <Card style={{ width: '18rem' }}>
         <Card.Img
                 alt={"logo"}
@@ -66,7 +62,7 @@ function HomePage(){
           <Card.Text>
             
           </Card.Text>
-          <Button variant="outline-dark">ליצירת קשר</Button>
+          <Button variant="outline-dark" href="/callUs">ליצירת קשר</Button>
         </Card.Body>
         </Card>
         </Col>

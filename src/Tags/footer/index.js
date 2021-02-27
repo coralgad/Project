@@ -13,10 +13,10 @@ function Footer() {
         <Navbar bg="light" variant="light" className="footer" style={{justifyContent: "flex-end"}}>
             <div style={{textAlign: "center", width: "50%"}}></div>
             <div style={{ display: "flex"}}>
-                <Nav.Link href="#" style={{ fontSize: "30px" }} target="_blank">
+                <Nav.Link href="https://www.facebook.com/" target="_blank" style={{ fontSize: "30px" }} target="_blank">
                     <FontAwesomeIcon style={{ color: "blue" }} icon={faFacebook} />
                 </Nav.Link>
-                <Nav.Link href="#" id="instaLogo" target="_blank">
+                <Nav.Link href="https://www.instagram.com/" target="_blank" id="instaLogo" target="_blank">
                     <img 
                         alt={"logo"}
                         src={ImgSrc}
