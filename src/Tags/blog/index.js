@@ -21,13 +21,7 @@ function Blog(props) {
             <Col xs={8}>
               <Card
                 border="secondary"
-                style={{
-                  width: "20rem",
-                  margin: "auto",
-                  height: "23rem",
-                }}
-              >
-
+                style={{width:'15rem', position:'relative', display:'inline-block'}}>
                 <Card.Body>
                   <Card.Title>{blog.title}</Card.Title>
                   <Card.Text>{blog.body}</Card.Text>

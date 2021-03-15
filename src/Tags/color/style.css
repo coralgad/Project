@@ -1,0 +1,36 @@
+
+div.swatches-picker div div div {
+    overflow-y:hidden !important;
+}
+div.swatches-picker div div {
+    box-shadow: none !important;
+}
+
+div.swatches-picker {
+    height: 150px !important;
+    width: 1000px !important;
+    overflow-y: hidden !important;
+    padding-right: 25px !important;
+    padding-left: 25px !important;
+    margin-left: 30px;
+    margin-right: 140px;
+}
+
+#cardsDiv{
+    padding: 20px;
+}
+
+div.row{
+    padding-left: 70px;
+}
+
+#colorDiv{
+        padding: 10px;
+        margin: 10px;
+    }
+
+.btn:not(:disabled):not(.disabled) {
+        cursor: pointer;
+        padding: 7px;
+        margin: 1px;
+    }

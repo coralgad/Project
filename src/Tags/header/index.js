@@ -1,6 +1,6 @@
 import React from 'react';
 import {Navbar,Nav,Form,FormControl,NavDropdown,Button} from 'react-bootstrap';
-import ImgSrc from './logo.jpeg';
+import ImgSrc from './logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './style.css';
@@ -11,7 +11,7 @@ function Header(){
     <Navbar.Brand href="/homePage"> <img
                 alt={"logo"}
                 src={ImgSrc}
-                width={"200"}
+                width={"250"}
                 height={"85"}
                 className={"d-inline-block align-top"}
             /></Navbar.Brand>

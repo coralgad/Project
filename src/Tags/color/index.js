@@ -1,30 +1,35 @@
+import React, { useState } from 'react';
+import { SwatchesPicker } from 'react-color';
+import {Row,Button} from 'react-bootstrap'
+import './style.css';
+import SingleCanCard from './singleCanCard.js'
 
-import React, { useState } from 'react'
-import { BlockPicker } from 'react-color'
-import Tippy from '@tippyjs/react'
-
-
-
-function Color(){
-  const [selectedColor, setSelectedColor] = useState('#ccc')
+function Color(props){
+  let [cansize, setCansize] = useState(props.cansize);
+  console.log(props.cansize);
+  const [selectedColor, setSelectedColor] = useState('')
   return (
-    <div className='app'>
-      <h1>בחר/י צבע</h1>
+    <div className='app' id="colorDiv">
+      <h1>בחירת צבע</h1>
       <p>
         שלב 1- בוחרים את הצבע הרצוי
       </p>
-      <div className='area' style={{ backgroundColor: selectedColor }}>
-      </div>
-      <Tippy interactive={true} placement={'bottom'} content={
-        <BlockPicker
+      <div id="picColor">
+        <SwatchesPicker 
           color={selectedColor}
           onChangeComplete={color => setSelectedColor(color.hex)}
         />
-      }>
-        <button className='ref-button'>Change box color</button>
-      </Tippy>
-      <div>בוחרים את גודל הפחית הרצויה</div>
-      <div> אייקונים של פחיות+ גודל+ בחירה של כמות</div>
+        </div>
+        <br/>
+              <div id="cardsDiv">
+              <p>שלב 2-בוחרים את גודל הפחית הרצויה</p>
+                <Row>
+                    {cansize.map((element, index) => {
+                        return <SingleCanCard cansize={element} key={index} index={index}/>
+                    })}
+                </Row>
+                <div><Button variant="secondary" className="quanSelectors">הוסף לעגלה</Button></div>
+          </div>
     </div>
       )
 }

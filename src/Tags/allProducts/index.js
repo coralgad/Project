@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import {Card,CardDeck,Button,Form,Row,Col} from 'react-bootstrap';
 import {LinkContainer} from 'react-router-bootstrap';
-// import picture from './1.png';
 import './style.css';
 
 function AllProducts(props) {
-    let [productsArrayState, updateproducts] = useState(props.products);
+    let [productsArrayState, updateproducts] = useState([]);
     let [currentFilter,setCurrenrFilter] = useState("initial");
+
+    
+    useEffect(()=>{
+        const getData = async()=> {
+                const res = await axios('http://localhost:3001/products');
+                console.log(res.data);
+                updateproducts(res.data);
+            }
+        getData();
+    },[])
 
     function priceAsc(){
         const productsByPriceAsc = productsArrayState.sort((a,b)=>a.price -b.price);
@@ -30,15 +40,15 @@ function AllProducts(props) {
                 break;
     }
 }
-
-
+    
+    const url = 'http://localhost:3001/images/'
     const productItem = productsArrayState.map((product,index)=>
     <div id="card" key={index}>
-       <Row>
+       <Row id="cardRow">
         <Col id="cardCol">
        <Card style={{width:'15rem', position:'relative', display:'inline-block'}}>
        <LinkContainer to={"/product"}>
-       <Card.Img variant="top" src={product.picture}/>
+       <Card.Img id="cardImg" variant="top" src={`${url}${product.pic}`}/>
        </LinkContainer>
        <Card.Body>
        <Card.Title>{product.name}</Card.Title> 
@@ -66,7 +76,7 @@ function AllProducts(props) {
 
     return(
         <>
-        <div>
+        <div id="cardDiv">
             <Form.Control value={currentFilter} onChange={handleChanges} as="select" custom>
             <option value="initial">מיין לפי</option>
             <option value="price low to high">מחיר מהנמוך לגבוה</option>

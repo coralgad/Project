@@ -1,4 +1,7 @@
-
+div#cardDiv{
+    padding: 10px;
+    margin: 10px;
+}
 .card-deck {
     display: flex;
     flex-flow: row wrap;
@@ -27,4 +30,14 @@
 .custom-select {
     width: 10%;
     margin: 7px;
+}
+
+#cardImg{
+    flex-shrink: 0;
+    width: 200px;
+    height: 250px;
+}
+
+#cardRow {
+    padding-left: 10px;
 }

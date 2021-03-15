@@ -1,0 +1,24 @@
+div#signUp{
+    padding: 10px;
+    margin: 10px;
+}
+
+
+
+label {
+    display: inline-block;
+    margin: 7px;
+}
+
+input{
+    padding: 6px 6px;
+}
+
+.form-control {
+    text-align: right;
+    display: block;
+    width: 45%;
+}
+
+
+

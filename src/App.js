@@ -16,10 +16,26 @@ import Login from './Tags/login/index';
 import SignUp from './Tags/signup/index.js';
 import CallUs from './Tags/callUs/index.js';
 import OrdersTable from './Tags/ordersTable/index.js';
+import SingleCanCard from './Tags/color/singleCanCard.js';
 
 
 
 function App() {
+
+  const cansize=[
+    {
+      id:1,
+      name:"בינוני"
+    },
+    {
+      id:2,
+      name:"גדול"
+    },
+    {
+      id:3,
+      name:"ענק"
+    }
+  ]
 
   const order =[
     {   
@@ -96,13 +112,14 @@ const products =[
       <Route exact path="/store" component={() => <AllProducts products={products} />} />
       <Route exact path="/product" component={() => <ProductPage products={products} />} />
       <Route exact path="/blog" component={Blog}/>
-      <Route exact path="/color" component={Color}/>
+      <Route exact path="/color" component={() => <Color cansize={cansize}/>}/>
       <Route exact path="/cart" component={() => <Cart products={products} />} />
       <Route exact path="/personalArea" component={PersonalArea}/>
       <Route exact path="/signin" component={Login} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/callUs" component={CallUs} />
       <Route exact path="/ordersTable" component={() => <OrdersTable order={order}/>} />
+      <Route exact path="/cansize" component={() => <SingleCanCard cansize={cansize}/>}/>
   </Router>
     </div>
     <Footer/>
