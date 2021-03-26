@@ -1,17 +1,33 @@
 import React from 'react';
 import './style.css';
 import {Container,Row,Col,Form,Button} from 'react-bootstrap';
+import { useState,useEffect } from 'react';
+import axios from 'axios';
+
+
 
 
 function ProductPage(props){
+    let [product, setProduct] = useState("");
+
+    useEffect(()=>{
+        const getData = async()=> {
+                const res = await axios(`http://localhost:3001/products/${props.products}`);
+                console.log(res.data);
+                setProduct(res.data[0]);
+            }
+        getData();
+    },[])
+
+    const url = 'http://localhost:3001/images/'
     return <div><Container id="productPage">
     <Row id="SingleProduct">
-        <h5>מוצר יחיד</h5>
+        <h5>{product.name} </h5>
     </Row>
     <Row>
       <Col><img
                 alt={"logo"}
-                src={props.products[0].picture}
+                src={`${url}${product.pic}`}
                 width= "200px"
                 style={{marginBottom: "10px"}}
 
@@ -19,28 +35,29 @@ function ProductPage(props){
             
             <img
                 alt={"logo"}
-                src={props.products[0].picture}
+                src={`${url}${product.pic1}`}
                 width= "200px"
                 style={{marginBottom: "10px"}}
 
             />
             <img
                 alt={"logo"}
-                src={props.products[0].picture}
+                src={`${url}${product.pic2}`}
                 width= "200px"
                 style={{marginBottom: "10px"}}
 
             /></Col>
+            
       <Col xs={6}>
       <img
                 alt={"logo"}
-                src={props.products[0].picture}
+                src={`${url}${product.pic}`}
                 width= "450px"
             /> </Col>
       <Col id="details">
-      <p id="prodName">{props.products[0].name}</p>
-      <p id="prodName">{props.products[0].price}₪</p>
-      <p id="prodDescription">{props.products[0].description}</p>
+      <p id="prodName">{product.name}</p>
+      <p id="prodName">{product.price}₪</p>
+      <p id="prodDescription">{product.description}</p>
     <div>
     <Form id="form">
             <Form.Group controlId="exampleForm.SelectCustom">
@@ -58,7 +75,7 @@ function ProductPage(props){
                 <option>10</option>
                 </Form.Control>
                 <div id="BtnDiv" >
-                <Button id="AddToCart" variant="outline-dark">הוסף לעגלה</Button>
+                <Button id="AddToCart" variant="outline-dark" onClick={()=>props.functionAddProduct(product)}>הוסף לעגלה</Button>
                 </div>
             </Form.Group>
             </Form>

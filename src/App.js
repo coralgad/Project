@@ -17,23 +17,38 @@ import SignUp from './Tags/signup/index.js';
 import CallUs from './Tags/callUs/index.js';
 import OrdersTable from './Tags/ordersTable/index.js';
 import SingleCanCard from './Tags/color/singleCanCard.js';
-
+import BlogPage from './Tags/blog/singleBlog.js';
+import { useState,useContext } from 'react';
+import  { StoreContext } from './Tags/store/store.js';
 
 
 function App() {
+  const [store, updateStore] = useContext(StoreContext);
+  const onAddProd = (prod) => {
+    store.cart.push(prod);
+    updateStore({
+      ...store,
+    })
+    console.log(store.cart)
+  }
+  
+const[id,setId] = useState("");
 
   const cansize=[
     {
       id:1,
-      name:"בינוני"
+      name:"בינוני",
+      price:20
     },
     {
       id:2,
-      name:"גדול"
+      name:"גדול",
+      price:30
     },
     {
       id:3,
-      name:"ענק"
+      name:"ענק",
+      price:40
     }
   ]
 
@@ -99,19 +114,26 @@ const products =[
       picture:pic,
   }
 ];
+ 
+const blog=[
 
+];
 
+let [search, updatesearch] = useState("");
   return (
     <>
     <div dir="rtl" className="App">
-      <Header/>
+      <Router>
+      <Header searchFunction={(item)=>updatesearch(item)}/>
+      </Router>
       <Router>
       <Route exact path="/" component={HomePage} />
       <Route exact path="/homePage" component={HomePage} />
       <Route exact path="/about" component={About} />
-      <Route exact path="/store" component={() => <AllProducts products={products} />} />
-      <Route exact path="/product" component={() => <ProductPage products={products} />} />
-      <Route exact path="/blog" component={Blog}/>
+      <Route exact path="/store" component={() => <AllProducts functionId={(id)=>setId(id)} products={search} functionAddProduct={onAddProd}/>}/>
+      <Route exact path="/product" component={() => <ProductPage products={id} functionAddProduct={(onAddProd)}/>}/>
+      <Route exact path="/blog" component={() => <Blog functionId={(id)=>setId(id)} blog={blog}/>}/>
+      <Route exact path="/singleBlog" component={() => <BlogPage blog={id} />} />
       <Route exact path="/color" component={() => <Color cansize={cansize}/>}/>
       <Route exact path="/cart" component={() => <Cart products={products} />} />
       <Route exact path="/personalArea" component={PersonalArea}/>
@@ -119,7 +141,7 @@ const products =[
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/callUs" component={CallUs} />
       <Route exact path="/ordersTable" component={() => <OrdersTable order={order}/>} />
-      <Route exact path="/cansize" component={() => <SingleCanCard cansize={cansize}/>}/>
+      <Route exact path="/cansize" component={() => <SingleCanCard cansize={cansize}/>}/> 
   </Router>
     </div>
     <Footer/>

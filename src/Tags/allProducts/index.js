@@ -8,7 +8,37 @@ function AllProducts(props) {
     let [productsArrayState, updateproducts] = useState([]);
     let [currentFilter,setCurrenrFilter] = useState("initial");
 
-    
+    // let [products,setProducts]=useState([]);
+        console.log(props.products);
+        useEffect(()=>{if(!props.products){
+        const getProd = async()=> {
+        const prod = await axios('http://localhost:3001/products');
+        updateproducts(prod.data);}
+        getProd();
+        }
+            else{
+                const getProdu = async()=> {
+                    const prod = await axios('http://localhost:3001/products');
+                    updateproducts([...prod.data].filter(search));
+                    console.log(prod.data.filter(search));
+                }
+                    getProdu();
+                   
+                    }
+            }
+         ,[]   
+       )
+
+
+
+    function search(item){
+        return(
+            item.name.includes(props.products)||
+            item.description.includes(props.products)
+        )
+    }
+
+
     useEffect(()=>{
         const getData = async()=> {
                 const res = await axios('http://localhost:3001/products');
@@ -17,6 +47,7 @@ function AllProducts(props) {
             }
         getData();
     },[])
+
 
     function priceAsc(){
         const productsByPriceAsc = productsArrayState.sort((a,b)=>a.price -b.price);
@@ -29,6 +60,7 @@ function AllProducts(props) {
     }
     const handleChanges = (SelectedItem)=>{
         setCurrenrFilter(SelectedItem.target.value);
+        console.log(SelectedItem.target.value);
         // eslint-disable-next-line default-case
         switch (SelectedItem.target.value) {
             case ("price low to high"):
@@ -47,10 +79,10 @@ function AllProducts(props) {
        <Row id="cardRow">
         <Col id="cardCol">
        <Card style={{width:'15rem', position:'relative', display:'inline-block'}}>
-       <LinkContainer to={"/product"}>
-       <Card.Img id="cardImg" variant="top" src={`${url}${product.pic}`}/>
+       <LinkContainer to="/product">
+       <Card.Img onClick={()=>props.functionId(product.id)} id="cardImg" variant="top" src={`${url}${product.pic}`}/>
        </LinkContainer>
-       <Card.Body>
+       <Card.Body id="cardBodyProduct">
        <Card.Title>{product.name}</Card.Title> 
        <Card.Text>{product.price}₪</Card.Text> 
        <Form.Label>בחירת כמות:</Form.Label>
@@ -66,7 +98,7 @@ function AllProducts(props) {
                 <option>9</option>
                 <option>10</option>
                 </Form.Control>
-       <Button variant="dark">הוסף לעגלה</Button>
+       <Button variant="dark" onClick={()=>props.functionAddProduct(product)}>הוסף לעגלה</Button>
        </Card.Body>
        </Card>
        </Col>

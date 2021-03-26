@@ -1,19 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import SingleCartCard from './singleCardCart.js';
 import './style.css';
+import  { StoreContext } from '../store/store.js';
 
 function Cart(props) {
-
-    let [prods, updateProds] = useState(props.products);
+    const [store, updateStore] = useContext(StoreContext);
+    let [prods, updateProds] = useState(store.cart);
     let initialPrice =0;
     for (let prod of prods){
         initialPrice+= parseInt(prod.price);
     }
     let [sum, updateSum] = useState(initialPrice);
 
-    const RemoveItem = (id) =>{
-        updateProds(prods.filter(product => product.id !== id));
+
+
+    function RemoveItem(id){
+        console.log(id);
+     updateProds(prods.filter(product => product.id !== id));
         for (let prod of prods){
             if (prod.id === id){
                 updateSum(initialPrice-prod.price);
@@ -31,7 +35,7 @@ function Cart(props) {
                     <div id="cartDetails">
                     <h1>סיכום הזמנה</h1>
                     <h4>מספר פריטים: {prods.length}</h4>    
-                    <h4>הכמות הכוללת: {sum}₪</h4>  
+                    <h4>הסכום הכולל: {sum}₪</h4>  
                     <Button variant="outline-secondary" id="checkoutBtn" href="./checkout">המשך ברכישה</Button>
                     <div>
                     <p className="text-right">

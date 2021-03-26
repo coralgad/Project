@@ -1,33 +1,37 @@
-import { React, useState } from "react";
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
 import { Card, Container, Col, Row} from "react-bootstrap";
+import {LinkContainer} from 'react-router-bootstrap';
 import "./style.css";
 
 
 function Blog(props) {
-  async function getPosts() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts/");
-    const data = await response.json();
-    return data;
-  }
+  let [blogArrayState, updateBlog] = useState([]);
+  useEffect(()=>{
+      const getData = async()=> {
+              const res = await axios('http://localhost:3001/blog');
+              console.log(res.data);
+              updateBlog(res.data);
+          }
+      getData();
+  },[])
 
-  const [blogsArray, setBlog] = useState("הפוסטים בטעינה...");
-
-  getPosts().then((data) => {
-    console.log(data);
-    const blogsHtml = data.map((blog, index) => {
+    const url = 'http://localhost:3001/images/'
+    const blogsHtml = blogArrayState.map((blog, index) => {
       return (
-        <div key={index}>
+        <div>
           <Row>
             <Col xs={8}>
               <Card
                 border="secondary"
                 style={{width:'15rem', position:'relative', display:'inline-block'}}>
                 <Card.Body>
-                  <Card.Title>{blog.title}</Card.Title>
-                  <Card.Text>{blog.body}</Card.Text>
+                <LinkContainer to={"/singleBlog"}>
+                <Card.Img onClick={()=>props.functionId(blog.id)} id="blogImg" variant="top" src={`${url}${blog.pic}`}/>
+                </LinkContainer>
+                  <Card.Title>{blog.headline}</Card.Title>
                 </Card.Body>
                 <Card.Footer>
-                  {blog.userId}
                   {blog.id}
                 </Card.Footer>
               </Card>
@@ -36,11 +40,9 @@ function Blog(props) {
         </div>
       );
     });
-    // console.log(blogsHtml);
-    setBlog(blogsHtml);
-  });
 
   return (
+    <div id="blogDiv">
     <Container>
       <p>
         <h1 id="allBlogsH1">טיפים והשראה</h1>
@@ -51,15 +53,12 @@ function Blog(props) {
       <Row>
       
         <Col className="flex">
-          {blogsArray}
+          {blogsHtml}
         </Col>
         
       </Row>
-      {/* <Row id="rowSortBlog">
-        <Button id="nextBlogButt">הבא</Button>
-        <Button id="prevBlogButt">הקודם</Button>
-      </Row> */}
     </Container>
+    </div>
   );
 }
 export default Blog;

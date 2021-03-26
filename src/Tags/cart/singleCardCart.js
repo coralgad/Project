@@ -37,7 +37,7 @@ function SingleCartCard(props){
               
             </div>
               <Button variant="outline-secondary" style={{float:"left"}} onClick={ () => 
-                props.onRemoveItem(props.index)}>מחק פריט</Button>
+                props.onRemoveItem(props.product.id)}>מחק פריט</Button>
             </p>
           </div>
         </div>

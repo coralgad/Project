@@ -3,11 +3,9 @@ import {Card,Row,Col,Form,Button} from 'react-bootstrap';
 import './style.css';
 import { useForm } from "react-hook-form";
 
-
 function CallUs(){
     const { register, handleSubmit, watch, errors } = useForm();
     console.log(watch("example"));
-
 
     const onSubmit = (data, r) => {
         alert(`תודה על פנייתך ל ${data.email}`);
@@ -29,61 +27,79 @@ function CallUs(){
 
 
 
-    return <div id="callUsDiv">
-        <Row>
+   
+    return (
+        <div className="ContactForm">
+            <div id="callUsDiv">
+            <Row>
             <Col xs={3}></Col>
-
             <Col xs={6}>  
-        <Card id="callUsCard">
-        <Card.Header as="h5">צור קשר</Card.Header>
+               <Card.Header as="h5">צור קשר</Card.Header>
         <Card.Body>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-        <Form.Row>
-            <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>שם פרטי-</Form.Label>
-            <Form.Control type="text" name="firstName" ref={register({ required: true })} />
-            {errors.firstName && <span>This field is required</span>}
-            </Form.Group>
-        </Form.Row>
+            <Form onSubmit={handleSubmit(onSubmit)}>
+            <Form.Row>
+            <Form.Label>שם מלא</Form.Label>
+            <Form.Control type="text"
+                    name="name" 
+                    ref={
+                        register({ 
+                            required: "Please enter your name", 
+                            maxLength: {
+                                value: 20,
+                                message: "Please enter a name with fewer than 20 characters"
+                            } 
+                        })
+                    } 
+                /><br />
+                {errors.name && errors.name.message}<br />
+                </Form.Row>
 
-        <Form.Row>
-        <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>שם משפחה-</Form.Label>
-            <Form.Control type="text" name="lastName" ref={register({ required: true })}/>
-            {errors.lastName && <span>This field is required</span>}
-            </Form.Group>
-        </Form.Row>
 
-        <Form.Group controlId="formGridphon">
-            <Form.Label>מספר טלפון-</Form.Label>
-            <Form.Control type="phone" placeholder="05X-XXXXXXX" name="phone" ref={register({ required: true })}/>
-            {errors.phone && <span>This field is required</span>}
-        </Form.Group>
 
-        <Form.Group controlId="formBasicEmail">
-            <Form.Label>דואר אלקטרוני</Form.Label>
-            <Form.Control type="email" placeholder="הקלד מייל" name="email" ref={register({ required: true, pattern: /^\S+@\S+$/i })}/>
-            {errors.email && <span>שדה זה הוא חובה</span>}
-            <Form.Text className="text-muted">
-            לעולם לא נשתף את הדוא"ל שלך עם אף אחד אחר.
-            </Form.Text>
-        </Form.Group>
+                <Form.Row>
+                <Form.Label>דוא"ל לפנייה</Form.Label>
+                <Form.Control type="text"
+                    name="email"
+                    placeholder="projectmailnegev@gmail.com"
+                    ref={
+                        register({
+                            required: "Please enter an email",
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "invalid email address"
+                            }
+                        })
+                    }
+                /><br/>
+                {errors.email && errors.email.message}<br />
+                </Form.Row>
 
-        <Form.Group controlId="exampleForm.ControlTextarea1">
-              <Form.Label>במה אפשר לעזור?</Form.Label>
-              <Form.Control as="textarea" rows={3} name="help" ref={register({ required: true })} />
-              {errors.help && <span>This field is required</span>}
-            </Form.Group>
+                <Form.Row>
+                <Form.Label>במה אפשר לעזור?</Form.Label>
+                <Form.Control type="text"
+                    name="comment" 
+                    as="textarea"
+                    rows={4}
+                    ref={
+                        register({
+                            required: true
+                        })
+                    } 
+                /><br/>
+                {errors.comment && "oops, you forgot your message!"}<br />
+                </Form.Row>
 
-        <Button variant="primary" type="submit">
-            שלח
-        </Button>
-        </Form>
-        </Card.Body>
-        </Card>
-        </Col>
-        <Col xs={3}></Col>
-        </Row>   
+
+                <Button variant="primary" type="submit">שליחה</Button>
+            </Form>
+            </Card.Body>
+            </Col>
+            <Col xs={3}></Col>
+            </Row>
+            </div>
         </div>
+    );
 }
+
+
 export default CallUs;

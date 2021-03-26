@@ -19,7 +19,7 @@ function About(){
                         באתרינו תוכלו למצוא מגוון רחב של מוצרים.
                         </p>
                         <p>
-                        אנו שמים דגש על איכות המוצרים,כל מוצר באתר הינו ברמת האיכות נטובה ביותר
+                        אנו שמים דגש על איכות המוצרים,כל מוצר באתר הינו ברמת האיכות הטובה ביותר
                         </p>
                         <p>
                         האתר הוקם על מנת לתת לכם חווית קניה נעימה ומהנה, קלה ופשוטה בכל שעות היממה.
@@ -45,8 +45,8 @@ function About(){
                         <a href="tel:0526855478">0505555478</a>
                         </Card.Text>
                         <Card.Text>
-                        מייל-
-                        <a href="mailto:coralgad@gmail.com">coralgad@gmail.com</a>
+                        דוא"ל ליצירת קשר-
+                        <a href="mailto:coralgad@gmail.com">projectmailnegev@gmail.com</a>
                         </Card.Text>
                     </Card.Body>
                     </Card>

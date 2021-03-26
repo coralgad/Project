@@ -16,3 +16,13 @@ div#aboutDiv{
     padding-left: 20px;
     padding-right: 10px;
 }
+
+div.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1px;
+}
+
+div.text-center.card{
+    padding-bottom: 10px;
+}

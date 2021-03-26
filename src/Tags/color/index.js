@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SwatchesPicker } from 'react-color';
-import {Row,Button} from 'react-bootstrap'
+import {Row} from 'react-bootstrap'
 import './style.css';
 import SingleCanCard from './singleCanCard.js'
 
@@ -28,7 +28,6 @@ function Color(props){
                         return <SingleCanCard cansize={element} key={index} index={index}/>
                     })}
                 </Row>
-                <div><Button variant="secondary" className="quanSelectors">הוסף לעגלה</Button></div>
           </div>
     </div>
       )

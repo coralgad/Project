@@ -13,7 +13,7 @@ function HomePage(){
     return <div id="homePageDiv">
       <Container>
         <Row>
-        <Jumbotron>
+        <Jumbotron id="jumbo">
         <h1>ברוכים הבאים לטמבוריה!</h1>
         <p>
         באתר זה תוכלו לקחת חלק גדול בעיצוב הבית שלכם! מבחירת הצבע בהתאמה אישית ועד רכישה של מוצרים שיהפכו את חווית הצביעה לכיפית והמספקת ביותר
@@ -22,7 +22,6 @@ function HomePage(){
           <p>
             גלישה מהנה!!!
           </p>
-          <Button id="starBtn" variant="outline-dark">בואו נתחיל!</Button>
         </p>
       </Jumbotron> 
       </Row>
@@ -54,7 +53,7 @@ function HomePage(){
                 height={"150"}
                 className={"d-inline-block align-top"}
             />
-        <Card.Body>
+        <Card.Body id="cardBody">
           <Card.Title> הסטודיו שלנו</Card.Title>
           <Card.Text>
            בסטודיו שלנו נמצאים חומרי הגלם האיכותיים ביותר ואנשי המקצוע הטובים ביותר המחכים לתת לכם את השירות הכי מקצועי שיש

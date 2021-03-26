@@ -1,11 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Navbar,Nav,Form,FormControl,NavDropdown,Button} from 'react-bootstrap';
 import ImgSrc from './logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './style.css';
+import {LinkContainer} from 'react-router-bootstrap';
+import {Link,BrowserRouter as Router, useHistory } from 'react-router-dom';
 
-function Header(){
+
+function Header(props){
+    let [search, updatesearch] = useState([]);
+    let history = useHistory();
+
+    const navigateToCart = () => {
+    history.push('/cart');
+      history.go('/cart')
+    }
     return <>
     <Navbar bg="light" variant="light">
     <Navbar.Brand href="/homePage"> <img
@@ -21,16 +31,21 @@ function Header(){
         <Nav.Link href="/store">מוצרים נלווים</Nav.Link>
         <Nav.Link href="/blog"> טיפים והשראה</Nav.Link>
       <Form id="formID" inline className="mr-auto" dir="ltr" >
-      <Nav.Link href="/cart" >
+      <Router>
+      <LinkContainer to="/cart">
+      <Link onClick={navigateToCart} to="/cart"> 
          <FontAwesomeIcon style={{ color: "black" }} icon={faShoppingCart} />
-      </Nav.Link>
-      <NavDropdown title="קטגוריות" id="collasible-nav-dropdown">
+      </Link>
+      </LinkContainer>
+      </Router>
+      <NavDropdown title="עוד" id="collasible-nav-dropdown">
       <NavDropdown.Item href="/signin">כניסה</NavDropdown.Item>
         <NavDropdown.Item href="/personalArea">אזור אישי</NavDropdown.Item>
         <NavDropdown.Item href="/callUs">צור קשר</NavDropdown.Item>
       </NavDropdown>
-        <Button variant="light" id="searchBtn" >חפש</Button>{' '}
-        <FormControl type="text" placeholder="חיפוש" className="mr-sm-2" dir="rtl"/>
+        <Button variant="light" id="searchBtn" onClick={()=>{props.searchFunction(search)}}>
+          חפש</Button>
+        <FormControl type="text" placeholder="חיפוש" className="mr-sm-2" dir="rtl" onChange={(e)=>{updatesearch(e.target.value)}} />
       </Form>
       </Nav>
     </Navbar>
